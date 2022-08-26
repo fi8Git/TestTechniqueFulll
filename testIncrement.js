@@ -5,21 +5,26 @@ function incrementDigitArray(origineDigitArray){
     let newDigitArray = origineDigitArray.reverse();
 
     for(let i in newDigitArray){
-        if(newDigitArray[i] == 9){
+        if(newDigitArray[i] === 9){
             newDigitArray[i] = 0;
+            continue;
         }
-        else{
-            newDigitArray[i]++ ;
-            break;
-        }
+
+        newDigitArray[i]++ ;
+        break;
     }
 
     newDigitArray.reverse();
 
-    if(newDigitArray[0] == 0)
+    if(newDigitArray.every(d => d === 0))
         newDigitArray.unshift(1);
     
     return newDigitArray;
 }
 
 console.log(incrementDigitArray([9,9]));
+console.log(incrementDigitArray([0]));
+console.log(incrementDigitArray([9,9,9,9,9,9,9]));
+console.log(incrementDigitArray([1,0,0]));
+console.log(incrementDigitArray([1,8,9]));
+console.log(incrementDigitArray([0,0,6]));
